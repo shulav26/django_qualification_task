@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Form</title>
+    <script>
+        function toggleForm() {
+            let formContainer = document.getElementById("formContainer");
+            if (formContainer.style.display === "block") {
+                formContainer.style.display = "none";
+            }
+            else{
+                formContainer.style.display = "block"
+            }
+        }
+    </script>
+    <style>
+        html, body{
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', 'Sans Serif', serif;
+            font-weight: 400;
+        }
+        *{
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        a{
+            -webkit-transition: 0.3s all cubic-bezier(0.66, 0.04, 0.5, 1.08);
+            -moz-transition: 0.3s all cubic-bezier(0.66, 0.04, 0.5, 1.08);
+            transition: 0.3s all cubic-bezier(0.66, 0.04, 0.5, 1.08);
+            text-decoration: none;
+        }
+        img{
+            max-width: 100%;
+        }
+        h1{
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .clearfix:before, .clearfix:after{
+            clear: both;
+            display: block;
+            content: "";
+        }
+        body{
+            font-size: 16px;
+            color: #3d3d3d;
+            line-height: 26px;
+            background-color: #f5f5f5;
+        }
+        .site-wrapper{
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .site-header{
+            background: #f5f5f5;
+            width: 100%;
+        }
+        .site-header>.container{
+            width: 100%;
+        }
+        .site-header .container .logo{
+            height: 100px;
+            width: 100px;
+            float: left;
+        }
+        .site-header .main-menu ul{
+            list-style: none;
+            float: right;
+            padding: 0;
+        }
+        .site-header .main-menu>ul>li{
+            display: inline-block;
+            padding: 20px 10px;
+        }
+        .site-header .main-menu ul li a{
+            padding: 20px 30px;
+            color: black;
+        }
+        .main-menu ul li a:hover{
+            color: white;
+            background: #152058;
+        }
+        .form-button{
+            margin-left: 45%;
+        }
+
+        /* Style for centering the form */
+        .form-container {
+            width: 50%; /* Adjust the width of the form container as needed */
+            margin: 0 auto; /* Center the form horizontally */
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #152058;
+            display: block; /* Initially hide the form */
+        }
+        .form-button {
+            padding: 10px 20px;
+            background-color: #152058;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .form-button:hover {
+            background-color: #152058;
+        }
+
+        /* Style for the form container */
+        .form-container {
+            width: 50%; /* Adjust the width of the form container as needed */
+            margin: 20px auto; /* Center the form horizontally with some space from the top */
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            display: block; /* Initially hide the form */
+        }
+        .form-container h1 {
+            margin-top: 0; /* Remove top margin for better alignment */
+        }
+        .form-container form {
+            margin-top: 20px; /* Add some space between the header and the form */
+        }
+        .form-container label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-container input[type="text"],
+        .form-container input[type="number"],
+        .form-container select {
+            width: calc(100% - 16px); /* Adjust width to consider padding and border */
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+        .form-container button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #152058;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .form-container button[type="submit"]:hover {
+            background-color: #152058;
+        }
+    </style>
+</head>
+<body>
+<div class="site-wrapper">
+{% load static %}
+    <header class="site-header">
+      <div class="container clearfix">
+        <div class="logo">
+            <a href="{% url 'computer_list' %}"><img src="{% static 'Logo_TV_2015.svg.png'%}" alt=""></a>
+        </div>
+        <nav class="main-menu">
+          <ul>
+            <li><a href="">Home</a></li>
+            <li><a href="">About</a></li>
+            <li><a href="">Services</a></li>
+            <li><a href="">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <Button class="form-button" onclick="toggleForm()">Computer Form</Button>
+    <div class="form-container" id="formContainer">
+        <h1>Computer Form</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
