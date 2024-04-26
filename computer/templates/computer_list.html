@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/tailwind.css" rel="stylesheet">
+    <link href="computer_hub/tailwind.css" rel="stylesheet">
     <title>Computer List</title>
     <script>
     function reloadpage() {
@@ -125,7 +125,7 @@
                 <li><a href="">Home</a></li>
                 <li><a href="">About</a></li>
                 <li><a href="">Services</a></li>
-                <li><a href="">Admin</a></li>
+                <li><a onclick="window.location.href='{% url 'admin:index' %}'">Admin</a></li>
               </ul>
             </nav>
           </div>
